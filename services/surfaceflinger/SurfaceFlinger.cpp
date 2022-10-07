@@ -6597,6 +6597,10 @@ void SurfaceFlinger::kernelTimerChanged(bool expired) {
     }));
 }
 
+nsecs_t SurfaceFlinger::getRefreshRateFromHWC() NO_THREAD_SAFETY_ANALYSIS {
+    return getVsyncPeriodFromHWC();
+}
+
 void SurfaceFlinger::toggleKernelIdleTimer() {
     using KernelIdleTimerAction = scheduler::RefreshRateConfigs::KernelIdleTimerAction;
 

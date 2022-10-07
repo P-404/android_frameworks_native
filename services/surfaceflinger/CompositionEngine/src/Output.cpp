@@ -841,6 +841,9 @@ std::optional<base::unique_fd> Output::composeSurfaces(
     bool hasSecureDisplay = false;
     bool needsProtected = false;
     for (auto* layer : getOutputLayersOrderedByZ()) {
+         if (!layer->requiresClientComposition()) {
+             continue;
+         }
          if (layer->getLayerFE().getCompositionState()->isSecureCamera) {
              hasSecureCamera = true;
          }
